@@ -4,12 +4,20 @@
   "description": "User-service",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "NODE_ENV=development nodemon ./app.js",
+    "test": "ava",
+    "watch": "ava --watch"
+  },
   "dependencies": {
+    "ava": "^3.13.0",
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.9",
     "morgan": "^1.10.0",
+    "nodemon": "^2.0.5",
     "swagger-jsdoc": "^4.3.0"
   }
 }
