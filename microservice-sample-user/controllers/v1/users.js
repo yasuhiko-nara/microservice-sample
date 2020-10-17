@@ -3,22 +3,6 @@ const model = require('../../models/user.js');
 const User = model.User;
 const router = express.Router();
 
-/**
- * @swagger
- *
- * /users:
- *   get:
- *     description: Returns a list of users.
- *     tags:
- *       - users
- *     responses:
- *       '200':
- *         description: A JSON array of users.
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/Users'
- */
 router.get('/', (req, res, next) => {
   (async () => {
     if (req.query.name) {
@@ -35,34 +19,6 @@ router.get('/', (req, res, next) => {
   })().catch(next);
 });
 
-/**
- * @swagger
- *
- * /users/{id}:
- *   get:
- *     description: Find user by ID.
- *     tags:
- *       - users
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: User ID.
- *         schema:
- *           type: 'string'
- *         example: '000000000000000000000000'
- *     responses:
- *       '200':
- *         description: A JSON object of user.
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/User'
- *       '400':
- *         $ref: '#/components/responses/BadRequest'
- *       '404':
- *         $ref: '#/components/responses/NotFound'
- */
 router.get('/:id', (req, res, next) => {
   (async () => {
     try {
@@ -79,40 +35,6 @@ router.get('/:id', (req, res, next) => {
   })().catch(next);
 });
 
-/**
- * @swagger
- *
- * /users:
- *   post:
- *     description: Create a user.
- *     tags:
- *       - users
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 example: 'alice'
- *               avatarUrl:
- *                 type: string
- *                 example: 'https://1.bp.blogspot.com/-LFh4mfdjPSQ/VCIiwe10YhI/AAAAAAAAme0/J5m8xVexqqM/s800/animal_neko.png'
- *             required:
- *               - name
- *               - avatarUrl
- *     responses:
- *       '200':
- *         description: Created user.
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/User'
- *       '400':
- *         $ref: '#/components/responses/BadRequest'
- */
 router.post('/', (req, res, next) => {
   (async () => {
     try {
@@ -128,50 +50,6 @@ router.post('/', (req, res, next) => {
   })().catch(next);
 });
 
-/**
- * @swagger
- *
- * /users/{id}:
- *   put:
- *     description: Update a user or create a user if user not exist.
- *     tags:
- *       - users
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: User ID.
- *         schema:
- *           type: 'string'
- *         example: '000000000000000000000000'
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             properties:
- *               name:
- *                 type: string
- *                 example: 'alice'
- *               avatarUrl:
- *                 type: string
- *                 example: 'https://1.bp.blogspot.com/-LFh4mfdjPSQ/VCIiwe10YhI/AAAAAAAAme0/J5m8xVexqqM/s800/animal_neko.png'
- *             required:
- *               - name
- *               - avatarUrl
- *     responses:
- *       '200':
- *         description: Updated or created user.
- *         content:
- *           application/json:
- *             schema:
- *               $ref: '#/components/schemas/User'
- *       '400':
- *         $ref: '#/components/responses/BadRequest'
- *       '404':
- *         $ref: '#/components/responses/NotFound'
- */
 router.put('/:id', (req, res, next) => {
   (async () => {
     try {
@@ -206,30 +84,6 @@ router.put('/:id', (req, res, next) => {
   })().catch(next);
 });
 
-/**
- * @swagger
- *
- * /users/{id}:
- *   delete:
- *     description: Delete a user.
- *     tags:
- *       - users
- *     parameters:
- *       - name: id
- *         in: path
- *         required: true
- *         description: User ID.
- *         schema:
- *           type: 'string'
- *         example: '000000000000000000000000'
- *     responses:
- *       '200':
- *         description: Empty body.
- *       '400':
- *         $ref: '#/components/responses/BadRequest'
- *       '404':
- *         $ref: '#/components/responses/NotFound'
- */
 router.delete('/:id', (req, res, next) => {
   (async () => {
     try {
